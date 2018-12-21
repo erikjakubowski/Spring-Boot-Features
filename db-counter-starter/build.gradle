@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot:2.0.0.BUILD-SNAPSHOT")
+    compile("org.springframework.data:spring-data-commons:2.0.2.RELEASE")
+    compile("org.springframework.boot:spring-boot-autoconfigure:2.0.0.BUILD-SNAPSHOT")
+}

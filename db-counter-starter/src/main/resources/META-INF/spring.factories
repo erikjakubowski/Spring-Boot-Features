@@ -1,0 +1,3 @@
+#uncomment to use dbcount runner w/o enable
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.spring.dbstarter.DbCountAutoConfig
+#Spring Boot will automatically process all the configuration class entries from spring.factories during the application context creation.

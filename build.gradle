@@ -1,0 +1,63 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("se.transmode.gradle:gradle-docker:1.2")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'groovy'
+apply plugin: 'docker'
+apply plugin: 'application'
+
+group 'spring'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+    implementation('org.springframework.boot:spring-boot-starter-mail')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    //starter
+    compile project(':db-counter-starter')
+
+    //toggle servlets
+    //implementation("org.springframework.boot:spring-boot-starter-jetty")
+
+    runtimeOnly('mysql:mysql-connector-java')
+    runtime("com.h2database:h2")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+
+    testCompile("info.cukes:cucumber-spring:1.2.5")
+    testCompile("info.cukes:cucumber-java8:1.2.5")
+    testCompile("info.cukes:cucumber-junit:1.2.5")
+
+    testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-2')
+    testCompile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-2')
+
+}
+
+//toggling servlets
+//configurations {
+//    compile.exclude module: "spring-boot-starter-tomcat"
+//}
